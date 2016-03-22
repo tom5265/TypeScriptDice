@@ -1,0 +1,29 @@
+button {
+    display: inline-block;
+    margin: 10px;
+    color: #FF0000;
+    border: 2px solid black;
+    background-color: #FFF;
+    padding: 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+button:active {
+    background-color: #D3D3D3;
+}
+
+.die {
+    margin: 15px;
+    height: 75px;
+    width: 75px;
+    background-color: #D3D3D3;
+    display: inline-block;
+    text-align: center;
+    vertical-align: center;
+    line-height: 75px;
+}

@@ -1,51 +1,47 @@
-let loadedDice: Array<Die> = [];
-
+var loadedDice = [];
 function randomRoll() {
     return Math.floor(Math.random() * 6 + 1);
 }
-
-class Die {
-    constructor(public value, public div) {
+var Die = (function () {
+    function Die(value, div) {
+        this.value = value;
+        this.div = div;
         this.value;
         this.div;
     }
-    insert() {
+    Die.prototype.insert = function () {
         this.div = document.createElement('div');
         this.div.className = 'die';
         this.roll();
         document.getElementById('dice-container').appendChild(this.div);
-    }
-
-    roll() {
-        let num = randomRoll();
+    };
+    Die.prototype.roll = function () {
+        var num = randomRoll();
         this.value = num;
         this.div.innerText = num;
-    } 
-}
-
+    };
+    return Die;
+}());
 function deleteDie(e) {
     console.log('hello');
     console.log(e.target);
-    let element = e.target;
+    var element = e.target;
     element.remove();
 }
-
 function make() {
-    let dice = new Die(randomRoll(), HTMLDivElement);
+    var dice = new Die(randomRoll(), HTMLDivElement);
     dice.insert();
     loadedDice.push(dice);
 }
-
 function rollDice() {
-    for (let i = 0; i < loadedDice.length; i++) {
+    for (var i = 0; i < loadedDice.length; i++) {
         loadedDice[i].roll();
     }
 }
-
 function sumDice() {
-    let total = 0;
-    for (let i = 0; i < loadedDice.length; i++) {
+    var total = 0;
+    for (var i = 0; i < loadedDice.length; i++) {
         total += loadedDice[i].value;
     }
-    alert(`The sum of the dice is ${total}`);
+    alert("The sum of the dice is " + total);
 }
