@@ -12,6 +12,9 @@ class Die {
     insert() {
         this.div = document.createElement('div');
         this.div.className = 'die';
+        this.div.onclick = function (e) {
+            deleteDie(e);
+        }
         this.roll();
         document.getElementById('dice-container').appendChild(this.div);
     }
@@ -20,7 +23,7 @@ class Die {
         let num = randomRoll();
         this.value = num;
         this.div.innerText = num;
-    } 
+    }
 }
 
 function deleteDie(e) {

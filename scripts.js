@@ -12,6 +12,9 @@ var Die = (function () {
     Die.prototype.insert = function () {
         this.div = document.createElement('div');
         this.div.className = 'die';
+        this.div.onclick = function (e) {
+            deleteDie(e);
+        };
         this.roll();
         document.getElementById('dice-container').appendChild(this.div);
     };
