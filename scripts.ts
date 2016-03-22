@@ -12,7 +12,7 @@ class Die {
     insert() {
         this.div = document.createElement('div');
         this.div.className = 'die';
-        this.div.onclick = function (e) {
+        this.div.ondblclick = function (e) {
             deleteDie(e);
         }
         this.roll();
@@ -27,8 +27,6 @@ class Die {
 }
 
 function deleteDie(e) {
-    console.log('hello');
-    console.log(e.target);
     let element = e.target;
     element.remove();
 }

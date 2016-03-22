@@ -12,7 +12,7 @@ var Die = (function () {
     Die.prototype.insert = function () {
         this.div = document.createElement('div');
         this.div.className = 'die';
-        this.div.onclick = function (e) {
+        this.div.ondblclick = function (e) {
             deleteDie(e);
         };
         this.roll();
@@ -26,8 +26,6 @@ var Die = (function () {
     return Die;
 }());
 function deleteDie(e) {
-    console.log('hello');
-    console.log(e.target);
     var element = e.target;
     element.remove();
 }
