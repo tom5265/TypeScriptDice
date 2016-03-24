@@ -5,34 +5,31 @@ function randomRoll() {
 }
 
 class Die {
-    constructor(public value, public div) {
-        this.value;
-        this.div;
-    }
-    insert() {
-        this.div = document.createElement('div');
+    value: number;
+    div: HTMLDivElement;
+    
+    constructor() {
+         this.div = document.createElement('div');
         this.div.className = 'die';
-        this.div.ondblclick = function (e) {
-            deleteDie(e);
-        }
+        this.div.addEventListener('click', () => {
+            this.roll();
+    })
+    }
+    insert(): void {
+        let diceContainer = document.getElementById('dice-container');
+        diceContainer.appendChild(this.div);
         this.roll();
-        document.getElementById('dice-container').appendChild(this.div);
     }
 
-    roll() {
+    roll(): void {
         let num = randomRoll();
         this.value = num;
-        this.div.innerText = num;
+        this.div.innerText = String(num);
     }
-}
-
-function deleteDie(e) {
-    let element = e.target;
-    element.remove();
 }
 
 function make() {
-    let dice = new Die(randomRoll(), HTMLDivElement);
+    let dice = new Die();
     dice.insert();
     loadedDice.push(dice);
 }

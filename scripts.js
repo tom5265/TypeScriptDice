@@ -3,34 +3,28 @@ function randomRoll() {
     return Math.floor(Math.random() * 6 + 1);
 }
 var Die = (function () {
-    function Die(value, div) {
-        this.value = value;
-        this.div = div;
-        this.value;
-        this.div;
-    }
-    Die.prototype.insert = function () {
+    function Die() {
+        var _this = this;
         this.div = document.createElement('div');
         this.div.className = 'die';
-        this.div.ondblclick = function (e) {
-            deleteDie(e);
-        };
+        this.div.addEventListener('click', function () {
+            _this.roll();
+        });
+    }
+    Die.prototype.insert = function () {
+        var diceContainer = document.getElementById('dice-container');
+        diceContainer.appendChild(this.div);
         this.roll();
-        document.getElementById('dice-container').appendChild(this.div);
     };
     Die.prototype.roll = function () {
         var num = randomRoll();
         this.value = num;
-        this.div.innerText = num;
+        this.div.innerText = String(num);
     };
     return Die;
 }());
-function deleteDie(e) {
-    var element = e.target;
-    element.remove();
-}
 function make() {
-    var dice = new Die(randomRoll(), HTMLDivElement);
+    var dice = new Die();
     dice.insert();
     loadedDice.push(dice);
 }
